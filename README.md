@@ -13,7 +13,6 @@ Now we have to use this data to determine which city to expand to next and build
 ## Dependancies
 * Pandas
 * matplotlib
-* sys (to run the file through command line)
 
 Install dependencies using [pip](https://pip.pypa.io/en/stable/)
 ## Initial Data Representation
