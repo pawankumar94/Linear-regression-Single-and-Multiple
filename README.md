@@ -106,7 +106,7 @@ We have used the **Mean Squarred Error** as the cost function to determine the d
 
 *The Final value of model parameters*
 
-- [theta0 , theta1 , theta2]
+*Representation: [theta0 , theta1 , theta2]*
 - Initial Values : [0,0,0]
 - Final Optimized Value : [340397.96353532 , 108742.65627238 , -5873.22993383]
 
