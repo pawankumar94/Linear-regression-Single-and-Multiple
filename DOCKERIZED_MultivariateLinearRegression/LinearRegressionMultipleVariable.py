@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import sklearn.preprocessing  as sk
 import numpy as np
 import sys
+import logging
+from datetime import datetime
 
 epoch = 500
 loss_list = []
@@ -26,6 +28,18 @@ for each_value in [(str(sys.argv[idx+1])).split("=") for idx in range(len(sys.ar
         TEST_FEATURES = each_value[1].split(",")
         TEST_FEATURES = [float(each) for each in TEST_FEATURES]
 
+# Assertion
+try:
+    logging.info("Asserting inputs :")
+    assert EPOCH_COUNT != -1
+    assert DATA_FILE_NAME != -1
+    assert LEARNING_RATE != -1
+    assert TEST_FEATURES != -1
+    logging.info("Assertion True")
+except AssertionError:
+    logging.error("Not all inputs are given, Results are not dependable")
+    exit(-1)
+
 learning_rate = LEARNING_RATE
 epoch = EPOCH_COUNT
 # reading data from text file to pandas data frame
@@ -45,13 +59,15 @@ plt.title(' Bedroom vs Price')
 plt.xlabel('Bedroom')
 plt.ylabel('Price ')
 plt.scatter(dataframe.iloc[:, 1:2], y)
-plt.show()
+# plt.show() # No GUI Adaptation
+plt.savefig('./resources/BedroomVsPrice_Multivariate_{0}.png'.format(datetime.utcnow()))
 plt.figure(figsize=(10, 5))
 plt.title(' Square foot Area vs Price')
 plt.xlabel('Area of House')
 plt.ylabel('Price ')
 plt.scatter(dataframe.iloc[:,:1], y)
-plt.show()
+# plt.show() # No GUI Adaptation
+plt.savefig('./resources/AreaVsPrice_Multivariate_{0}.png'.format(datetime.utcnow()))
 def cost_computation():
     predicted_value = X.dot(theta.T)  # hypothesis
     error = predicted_value - y
@@ -81,7 +97,8 @@ def gradient_computation(learning_rate, epoch):
     plt.xlabel('NumberofIteration')
     plt.ylabel('Cost')
     plt.plot(epoch_list, loss_list)  # convergence evaluation
-    plt.show()
+    # plt.show() # No GUI adaption
+    plt.savefig('./resources/Covergence_Multivariate_{0}.png'.format(datetime.utcnow()))
 def user_func(user_input):
     user_input = np.reshape(user_input, (-1, len(TEST_FEATURES)))
     user_input = scalar.transform(user_input)  # scaling user input with training data mean and standard deviation

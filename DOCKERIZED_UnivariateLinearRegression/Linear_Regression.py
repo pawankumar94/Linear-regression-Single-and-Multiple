@@ -1,6 +1,8 @@
+import logging
 import pandas as pd
 import matplotlib.pyplot as plt
 import sys
+from datetime import datetime
 
 header_list = ["Population", "profit", "error", "Squared_Error", "m_der"]  # headers for the attributes
 m = 0  # slope of the line(weight parameter)
@@ -24,12 +26,25 @@ for each_value in [(str(sys.argv[idx+1])).split("=") for idx in range(len(sys.ar
         LEARNING_RATE = float(each_value[1])
     if str(each_value[0]) == 'TEST_POPULATION_SIZE':
         TEST_POPULATION_SIZE = float(each_value[1])
+
+# Assertion
+try:
+    logging.info("Asserting inputs :")
+    assert EPOCH_COUNT != -1
+    assert DATA_FILE_NAME != -1
+    assert LEARNING_RATE != -1
+    assert TEST_POPULATION_SIZE != -1
+    logging.info("Assertion True")
+except AssertionError:
+    logging.error("Not all inputs are given, Results are not dependable")
+    exit(-1)
+
 # reading data from text file to pandas data frame
 dataframe = pd.read_csv(DATA_FILE_NAME, sep=",", names=header_list, header=None)
 x = dataframe['Population']  # Independant Variable
 y = dataframe['profit']  # Dependant Variable on x
-L = LEARNING_RATE  # hyperparameter
-epoch = EPOCH_COUNT # hyperparameter
+L = LEARNING_RATE  # hyper parameter
+epoch = EPOCH_COUNT # hyper parameter
 for i in range(epoch):
     for ind, val in enumerate(dataframe.Population):
         y_pred = m * val + c  # Predicted Value of profit(hypothesis of Model)
@@ -57,13 +72,14 @@ print('Optimal value of m :', m)
 print('Optimal value of c :', c)
 print('Beginning Value of Cost', cost_list[0])
 print('optimal Cost value :', cost_list[-1])
-#Visualization of Initial Dataset
+# Visualization of Initial Data Set
 plt.figure(figsize=(10, 5))
 plt.title(' Distribution of data')
 plt.xlabel('Population of City in 10,000s')
 plt.ylabel('Profit in $10,000s')
 plt.scatter(x,y)
-plt.show()
+#plt.show() # No GUI Adaptation
+plt.savefig('./resources/Dist_Dataset_Univariate_{0}.png'.format(datetime.utcnow()))
 # Visualization of Iteration vs Cost
 fig = plt.figure(figsize=(10, 5))
 ax1 = fig.add_subplot()
@@ -71,7 +87,8 @@ ax1.set_title('Convergence of Gradient descent')
 ax1.set_xlabel('iterations')
 ax1.set_ylabel('Cost')
 ax1.plot(i_list, cost_list)
-plt.show()
+#plt.show() # No GUI Adaptation
+plt.savefig('./resources/Convergence_Univariate_{0}.png'.format(datetime.utcnow()))
 # Visualization of Regression Line
 fig = plt.figure(figsize=(10, 5))
 ax = fig.add_subplot()
@@ -79,7 +96,8 @@ ax.set_title('Profit ratio w.r.t Population')
 ax.set_xlabel('Population of City in 10,000s')
 ax.set_ylabel('Profit in $10,000s')
 ax.scatter(x, y, marker='+', label='Training Data')
-#plt.scatter(x, predicted_value)
+# plt.scatter(x, predicted_value)
 ax.plot([min(x), max(x)], [min(predicted_value), max(predicted_value)], color='red', label=' Prediction ')  # regression line
 ax.legend(loc='best')
-plt.show()
+#plt.show() # No GUI Adaptation
+plt.savefig('./resources/Final_Prediction_Univariate_{0}.png'.format(datetime.utcnow()))

@@ -16,7 +16,7 @@ Now we have to use this data to determine which city to expand to next and build
 
 Install dependencies using [pip](https://pip.pypa.io/en/stable/)
 ## Initial Data Representation
-![alt text](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/Univariate%20Linear%20Regression/ex1data1initialdatarep.PNG)
+![alt text](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/readmeGraphics/ex1data1initialdatarep.PNG)
 
 The task of our linear regression model is to learn a hypothesis function(h) which signifies the linear relationship of Profit w.r.t of Population which would be used to predict
 the Profit if given the Population of a city , the hypothesis function could be denoted as the simple linear equation of line:
@@ -33,7 +33,7 @@ We have used the MSE as the cost function to determine the difference between ou
 To minimize the cost function value the model needs to learn the best value of the model parameters(theta1,theta0) , initial value of weight(m) and bias(c) is initialized as 0 and these values are updated iteratively to minimize the cost until it becomes constant or minimum.
 As below we can see that with our optimized hyperparameter learning rate as *0.01* and epochs as *1000* we could observe a drastic change in our cost Value getting almost constant after *900* epoch
 
-![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/Univariate%20Linear%20Regression/gradient%20convergence%20plot%20ex1data.PNG)
+![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/readmeGraphics/gradient%20convergence%20plot%20ex1data.PNG)
 
 *The Final value of model parameters*:
 - Optimal value of m(theta1)  1.09872776181806
@@ -44,7 +44,7 @@ As below we can see that with our optimized hyperparameter learning rate as *0.0
 2. Profit on 70 ,000 Population :$46496.572727228675
 
 ## Final regression Line
-![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/Univariate%20Linear%20Regression/RegressionLineex1data.PNG)
+![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/readmeGraphics/RegressionLineex1data.PNG)
 
 
 ## 2. Problem Statement for Multivariate Linear Regression:
@@ -67,8 +67,8 @@ Now we have to use this data to  and build model to predict Price of the house g
 Install dependencies using [pip](https://pip.pypa.io/en/stable/)
 
 ## Initial Data Representation
-![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/Multivariate%20Linear%20Regression/MultivariateDataRep1.PNG)
-![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/Multivariate%20Linear%20Regression/MultivariateDataRep2.PNG)
+![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/readmeGraphics/MultivariateDataRep1.PNG)
+![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/readmeGraphics/MultivariateDataRep2.PNG)
 
 *Relationships,Objective,Cost,Optimization  of our Model for this problem would be same as per described for Univariate. The changes/Updates we would make is in our hypothesis function  and Cost function as we have multiple attributes to deal with , we would learn parameters for each feature to minimize the Cost function*
 
@@ -112,7 +112,7 @@ We have used the **Mean Squarred Error** as the cost function to determine the d
 
 ## Gradient Convergence Plot:
 The optimized Hyperparameter selected for the model were learning rate as *0.01* and epoch as *1000* 
-![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/Multivariate%20Linear%20Regression/gradient%20convergence%20plot%20ex1data2.PNG)
+![alt text ](https://github.com/pawankumar94/Linear-regression-Single-and-Multiple/blob/master/readmeGraphics/gradient%20convergence%20plot%20ex1data2.PNG)
 
 ## *Prediction Value of User input:*
 Price of 1650 Square Foot house with Bedroom : $ 293221.86768361
